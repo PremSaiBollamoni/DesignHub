@@ -1,0 +1,79 @@
+server:
+  port: ${PORT:8787}
+  forward-headers-strategy: framework
+
+spring:
+  config:
+    import: optional:file:./config/local.yml
+  application:
+    name: designhub
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:designhub}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=utf8
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:PremSai}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  jackson:
+    default-property-inclusion: non_null
+
+designhub:
+  jwt:
+    secret: ${JWT_SECRET:designhub-dev-only-secret-change-me-please-0123456789abcdef}
+    expiry-hours: 168
+  crypto:
+    # 32+ char key used to derive the AES key that protects stored AI provider credentials
+    master-key: ${CRYPTO_MASTER_KEY:designhub-dev-only-crypto-master-key-change-me}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173}
+  storage:
+    dir: ${STORAGE_DIR:./data/uploads}
+  public-url: ${PUBLIC_URL:http://localhost:8787}
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  ml:
+    worker-url: ${ML_WORKER_URL:http://localhost:8090}
+  mail:
+    # Mailgun. Put the key in packages/backend/config/local.yml (never in this file) or the MAILGUN_API_KEY variable.
+    api-key: ${MAILGUN_API_KEY:}
+    domain: ${MAILGUN_DOMAIN:sandbox7478c3d14e6846639d26c66e31d57449.mailgun.org}
+    region: ${MAILGUN_REGION:us}
+    from: ${MAIL_FROM:DesignHub <postmaster@sandbox7478c3d14e6846639d26c66e31d57449.mailgun.org>}
+    base-url: ${MAILGUN_BASE_URL:}
+  access:
+    # Only addresses on these domains (or their subdomains) can register or sign in. Leave empty to allow everyone.
+    allowed-email-domains: ${ALLOWED_EMAIL_DOMAINS:cutmap.ac.in,cutm.ac.in,thegttech.com}
+  ai:
+    # Provider base URLs must be public https by default, so a typed URL can never make the server call internal services.
+    allow-private-urls: ${ALLOW_PRIVATE_AI_URLS:false}
+  google:
+    # Create a Web OAuth client at console.cloud.google.com and paste its client id here (or set GOOGLE_CLIENT_ID).
+    client-id: ${GOOGLE_CLIENT_ID:799788494145-6r5b5cf8g20p8hdi01aichsja6ii7jmv.apps.googleusercontent.com}
+  social:
+    facebook:
+      client-id: ${FACEBOOK_CLIENT_ID:}
+      client-secret: ${FACEBOOK_CLIENT_SECRET:}
+    linkedin:
+      client-id: ${LINKEDIN_CLIENT_ID:}
+      client-secret: ${LINKEDIN_CLIENT_SECRET:}
+    x:
+      client-id: ${X_CLIENT_ID:}
+      client-secret: ${X_CLIENT_SECRET:}
+    pinterest:
+      client-id: ${PINTEREST_CLIENT_ID:}
+      client-secret: ${PINTEREST_CLIENT_SECRET:}
+
+logging:
+  level:
+    com.designhub: INFO

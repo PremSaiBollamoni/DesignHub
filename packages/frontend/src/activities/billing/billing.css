@@ -1,0 +1,83 @@
+.meters {
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.meters h2 {
+  font-size: var(--text-xl);
+}
+.meter__top {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  margin-bottom: 6px;
+}
+.meter__top span:last-child {
+  color: var(--ink-3);
+}
+.meter__bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--sunken);
+  overflow: hidden;
+}
+.meter__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ultra);
+  transition: width var(--t-med) var(--ease);
+}
+.meter__fill.is-high {
+  background: var(--signal);
+}
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.plan {
+  padding: 22px;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+.plan.is-current {
+  border-color: var(--ultra);
+  box-shadow: 0 0 0 1px var(--ultra), var(--shadow-1);
+}
+.plan__price {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.plan__price small {
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  font-weight: 400;
+  color: var(--ink-3);
+}
+.plan ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  color: var(--ink-2);
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.table th {
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+  font-weight: 600;
+}

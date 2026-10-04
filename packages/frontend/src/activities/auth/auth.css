@@ -1,0 +1,202 @@
+.auth {
+  display: grid;
+  grid-template-columns: minmax(360px, 520px) 1fr;
+  min-height: 100%;
+  background: var(--bone);
+}
+.auth__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  padding: 48px clamp(24px, 6vw, 72px);
+  background: var(--paper);
+}
+.auth__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+.auth__form {
+  display: grid;
+  gap: 16px;
+}
+.auth__form h1 {
+  font-size: var(--text-2xl);
+  margin-bottom: 4px;
+}
+.auth__form .lede {
+  color: var(--ink-2);
+}
+.auth__alt {
+  color: var(--ink-2);
+}
+.auth__error {
+  padding: 10px 12px;
+  border-radius: var(--r-2);
+  background: var(--danger-tint);
+  color: var(--danger);
+  font-size: var(--text-sm);
+}
+
+/* The memorable part: a live-looking canvas with a collaborator mid-edit. */
+.auth__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--ultra) 16%, transparent), transparent 42%),
+    var(--canvas-bg);
+}
+.auth__stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.55;
+}
+.poster {
+  position: relative;
+  width: min(380px, 62%);
+  aspect-ratio: 4 / 5;
+  background: var(--ink);
+  border-radius: 6px;
+  box-shadow: var(--shadow-3);
+  overflow: hidden;
+  transform: rotate(-2deg);
+  animation: poster-in 700ms var(--ease) both;
+}
+.poster__disc {
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 1;
+  right: -22%;
+  top: -12%;
+  border-radius: 50%;
+  background: var(--ultra);
+}
+.poster__dot {
+  position: absolute;
+  width: 34%;
+  aspect-ratio: 1;
+  left: -8%;
+  bottom: 12%;
+  border-radius: 50%;
+  background: var(--signal);
+}
+.poster__title {
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  bottom: 12%;
+  color: #f6f5f2;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+.poster__select {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 8%;
+  height: 34%;
+  border: 1.5px solid var(--ultra);
+  pointer-events: none;
+}
+.poster__select i {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #fff;
+  border: 1.5px solid var(--ultra);
+  border-radius: 2px;
+}
+.poster__select i:nth-child(1) { left: -5px; top: -5px; }
+.poster__select i:nth-child(2) { right: -5px; top: -5px; }
+.poster__select i:nth-child(3) { left: -5px; bottom: -5px; }
+.poster__select i:nth-child(4) { right: -5px; bottom: -5px; }
+.cursor-tag {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  animation: cursor-drift 5s ease-in-out infinite alternate;
+}
+.cursor-tag svg {
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 25%));
+}
+.cursor-tag span {
+  margin-top: 14px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.cursor-tag--mia { right: 14%; top: 56%; color: var(--signal); }
+.cursor-tag--mia span { background: var(--signal); }
+.cursor-tag--ravi { left: 12%; top: 22%; color: #0c8a6a; animation-delay: -2s; }
+.cursor-tag--ravi span { background: #0c8a6a; }
+.auth__bubble {
+  position: absolute;
+  right: 9%;
+  top: 14%;
+  max-width: 220px;
+  padding: 10px 12px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--paper);
+  box-shadow: var(--shadow-2);
+  font-size: var(--text-sm);
+  animation: poster-in 700ms 500ms var(--ease) both;
+}
+.auth__bubble b {
+  display: block;
+  margin-bottom: 2px;
+}
+
+@keyframes poster-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) rotate(-5deg);
+  }
+}
+@keyframes cursor-drift {
+  to {
+    transform: translate(26px, 18px);
+  }
+}
+
+@media (max-width: 900px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+  .auth__stage {
+    display: none;
+  }
+  .auth__panel {
+    min-height: 100vh;
+  }
+}
+
+.auth__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+.auth__divider::before,
+.auth__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}

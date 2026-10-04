@@ -1,0 +1,48 @@
+.tgrid {
+  columns: 220px;
+  column-gap: 20px;
+}
+.tgrid > * {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+.tcard {
+  display: grid;
+  gap: 10px;
+}
+.tcard__thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-3);
+  background: var(--sunken);
+  overflow: hidden;
+  transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-med) var(--ease);
+}
+.tcard__thumb:hover:not(:disabled) {
+  border-color: var(--ultra);
+  box-shadow: var(--shadow-2);
+}
+.tcard__thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: var(--shadow-2);
+}
+.tcard__cta {
+  position: absolute;
+  inset: auto 0 14px 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all var(--t-med) var(--ease);
+  pointer-events: none;
+}
+.tcard__thumb:hover .tcard__cta,
+.tcard__thumb:focus-visible .tcard__cta {
+  opacity: 1;
+  transform: none;
+}

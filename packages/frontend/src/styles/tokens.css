@@ -1,0 +1,196 @@
+/*
+ * Design tokens: Obsidian x Cream x Flame x Gold.
+ * Components only ever read these variables. Legacy names (--bone, --paper, --ultra...) are kept as aliases
+ * so every existing screen follows the theme without being rewritten.
+ */
+:root,
+:root[data-theme='light'] {
+  --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  --background: #f7f5f0;
+  --surface: #ffffff;
+  --surface-2: #f0ede6;
+  --surface-3: #e7e3db;
+  --hover: #f1eee8;
+  --selected: #fff0ea;
+
+  --text-primary: #151515;
+  --text-secondary: #62605b;
+  --text-muted: #8c8982;
+  --text-disabled: #b8b4ac;
+
+  --border: #ddd9d1;
+  --border-strong: #c9c4ba;
+  --focus: #ff5a36;
+
+  --brand: #ff5a36;
+  --brand-hover: #e94a2b;
+  --brand-active: #c83b22;
+  --brand-light: #ffe5db;
+  --brand-subtle: #fff0ea;
+  --on-brand: #ffffff;
+  --gold: #ffb547;
+
+  --success: #268a5b;
+  --warning: #c98216;
+  --error: #d64545;
+  --info: #3d82a8;
+  --success-tint: #e1f2e9;
+  --warning-tint: #fbefd6;
+  --error-tint: #fbe5e5;
+
+  --workspace: #e8e5de;
+  --canvas-bg: #e8e5de;
+  --toolbar: #ffffff;
+
+  /* Sparingly used gradients */
+  --g-brand: linear-gradient(135deg, #ff5a36, #ffb547);
+  --g-sunset: linear-gradient(135deg, #ff5a36, #f43f5e);
+  --g-fire: linear-gradient(135deg, #e94a2b, #ff8a45 55%, #ffd166);
+  --g-dark-fire: linear-gradient(135deg, #70271b, #ff5a36);
+  --g-ai: linear-gradient(135deg, #ff5a36, #ff8a45 55%, #ffc857);
+  --ai: #ff7a45;
+  --ai-2: #ffc857;
+  --ai-bg: #24170f;
+  --ai-cream: #fff0d2;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 4%);
+  --shadow-2: 0 1px 2px rgb(0 0 0 / 4%), 0 8px 24px rgb(0 0 0 / 6%);
+  --shadow-3: 0 2px 6px rgb(0 0 0 / 8%), 0 24px 60px rgb(0 0 0 / 18%);
+
+  --r-1: 6px;
+  --r-2: 8px;
+  --r-3: 12px;
+  --r-modal: 16px;
+  --r-lg: 18px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-fast: 120ms;
+  --t-med: 220ms;
+
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 30px;
+  --text-3xl: 52px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: light;
+
+  /* Legacy aliases used across existing components */
+  --bone: var(--background);
+  --paper: var(--surface);
+  --sunken: var(--surface-2);
+  --ink: var(--text-primary);
+  --ink-2: var(--text-secondary);
+  --ink-3: var(--text-muted);
+  --line: var(--border);
+  --line-strong: var(--border-strong);
+  --ultra: var(--brand);
+  --ultra-hover: var(--brand-hover);
+  --ultra-tint: var(--brand-subtle);
+  --on-ultra: var(--on-brand);
+  --signal: var(--gold);
+  --signal-tint: #fff3dc;
+  --ok: var(--success);
+  --ok-tint: var(--success-tint);
+  --warn: var(--warning);
+  --warn-tint: var(--warning-tint);
+  --danger: var(--error);
+  --danger-tint: var(--error-tint);
+  --band: #151515;
+  --on-band: #f5f1e9;
+}
+
+:root[data-theme='dark'] {
+  --background: #090909;
+  --surface: #111111;
+  --surface-2: #171716;
+  --surface-3: #20201e;
+  --hover: #1d1d1b;
+  --selected: #2a1813;
+
+  --text-primary: #f5f1e9;
+  --text-secondary: #d0ccc4;
+  --text-muted: #8a877f;
+  --text-disabled: #4d4b47;
+
+  --border: #292825;
+  --border-strong: #3a3834;
+  --focus: #ff6845;
+
+  --brand: #ff6845;
+  --brand-hover: #ff7959;
+  --brand-active: #e94a2b;
+  --brand-light: #321a13;
+  --brand-subtle: #2a1813;
+  --on-brand: #160a06;
+
+  --success: #43b982;
+  --warning: #e8a83e;
+  --error: #ff6868;
+  --info: #65a6c8;
+  --success-tint: #12281f;
+  --warning-tint: #2c2210;
+  --error-tint: #321616;
+
+  --workspace: #080808;
+  --canvas-bg: #080808;
+  --toolbar: #151515;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 35%);
+  --shadow-2: 0 1px 2px rgb(0 0 0 / 35%), 0 12px 30px rgb(0 0 0 / 25%);
+  --shadow-3: 0 2px 6px rgb(0 0 0 / 50%), 0 28px 64px rgb(0 0 0 / 55%);
+  color-scheme: dark;
+
+  --signal-tint: #2c2210;
+}
+
+:root[data-theme='oled'] {
+  --background: #000000;
+  --surface: #080808;
+  --surface-2: #101010;
+  --surface-3: #181818;
+  --hover: #151515;
+  --selected: #21110d;
+
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --text-muted: #8a8a8a;
+  --text-disabled: #4a4a4a;
+
+  --border: #222222;
+  --border-strong: #333333;
+  --focus: #ff6845;
+
+  --brand: #ff5a36;
+  --brand-hover: #ff7959;
+  --brand-active: #e94a2b;
+  --brand-light: #2a1510;
+  --brand-subtle: #21110d;
+  --on-brand: #120704;
+
+  --success: #43b982;
+  --warning: #e8a83e;
+  --error: #ff6868;
+  --info: #65a6c8;
+  --success-tint: #0e231a;
+  --warning-tint: #261d0d;
+  --error-tint: #2b1212;
+
+  --workspace: #000000;
+  --canvas-bg: #000000;
+  --toolbar: #0c0c0c;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 60%);
+  --shadow-2: 0 12px 30px rgb(0 0 0 / 45%);
+  --shadow-3: 0 28px 64px rgb(0 0 0 / 70%);
+  color-scheme: dark;
+
+  --signal-tint: #261d0d;
+}
